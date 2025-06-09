@@ -14,7 +14,7 @@ jobs:
         env:
           GITHUB_PAT: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         run: |
-          git clone --bare https://$GITHUB_PAT@github.com/flatironsdevelopment/rails_node_test.git
+          git clone --bare https://$GITHUB_PAT@github.com/flatirons-hiring/rails_node_test.git
           cd rails_node_test.git
           git bundle create repo.bundle --all
 
@@ -28,7 +28,7 @@ jobs:
             const username = context.payload.issue.body.trim(); // GitHub username from the issue body
             const newRepoName = `rails_node_test_${username}`;
             const response = await github.rest.repos.createInOrg({
-              org: "flatironsdevelopment",
+              org: "flatirons-hiring",
               name: newRepoName,
               private: true,
             });
@@ -56,7 +56,7 @@ jobs:
             const newRepoName = "${{ steps.create-repo.outputs.newRepoName }}"; // Repository name
 
             await github.rest.repos.addCollaborator({
-              owner: "flatironsdevelopment",
+              owner: "flatirons-hiring",
               repo: newRepoName,
               username: username,
               permission: "push", // Options: pull, triage, push, maintain, admin
