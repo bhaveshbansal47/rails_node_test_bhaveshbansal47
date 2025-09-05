@@ -7,8 +7,10 @@ Be sure to read **all** of this document carefully, and follow the guidelines wi
 Implement a full-stack web or mobile application that can upload, process, and store into a database the following CSV filem which contains a list of products. An example CSV file is located in data.csv in this repo.
 
 ## Technology Choice
-1. Backend: Ruby on Rails, NestJS, .NET, or Python (choose the one you are being hired for)
-2. Frontend: React (for web candidates) or React Native (for mobile candidates)
+1. **Backend**: Ruby on Rails, NestJS, .NET, or Python (choose the one relevant to your hiring role)
+2. **Frontend**:  
+   - **Web**: React or Next.js + React  
+   - **Mobile**: React Native or Flutter (depending on the applied role)
 
 ## Requirements - Backend
 
