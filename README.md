@@ -10,7 +10,7 @@ Implement a full-stack web or mobile application that can upload, process, and s
 1. **Backend**: Ruby on Rails, NestJS, .NET, or Python (choose the one relevant to your hiring role)
 2. **Frontend**:  
    - **Web**: React or Next.js + React  
-   - **Mobile**: React Native or Flutter (depending on the applied role)
+   - **Mobile**: React Native, Flutter, or Swift (depending on the applied role)
 
 ## Requirements - Backend
 
