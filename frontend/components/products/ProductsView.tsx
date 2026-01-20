@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { format } from "date-fns";
-import { FilterState } from "../../types";
-import { getProducts, ApiResponse, ProductQueryParams } from "../../api";
+import { ApiResponse, FilterState } from "../../types";
+import { getProducts, ProductQueryParams } from "../../api";
 import ProductHeader from "./ProductHeader";
 import ProductFilters from "./ProductFilters";
 import ProductSort from "./ProductSort";
