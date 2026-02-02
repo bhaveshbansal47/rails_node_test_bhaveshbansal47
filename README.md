@@ -1,34 +1,86 @@
-# Flatirons Full-Stack Developer Coding Test
+# Project Setup Algorithm
 
-Be sure to read **all** of this document carefully, and follow the guidelines within.
+## Prerequisites
 
-## Context
+- Node.js (v18+ recommended)
+- Docker & Docker Compose
+- AWS Credentials (for S3 uploads)
 
-Implement a full-stack web or mobile application that can upload, process, and store into a database the following CSV filem which contains a list of products. An example CSV file is located in data.csv in this repo.
+## 1. Backend Setup
 
-## Technology Choice
-1. **Backend**: Ruby on Rails, NestJS, .NET, or Python (choose the one relevant to your hiring role)
-2. **Frontend**:  
-   - **Web**: React or Next.js + React  
-   - **Mobile**: React Native, Flutter, or Swift (depending on the applied role)
+The backend handles file processing, database interactions, and background workers.
 
-## Requirements - Backend
+### Steps:
 
-1. The products should be stored along with multiple exchange rates at the time of the upload utilizing this [API](https://github.com/fawazahmed0/exchange-api) (include at least 5 currencies). All product fields are required and must be present.
-2. Implement an endpoint that returns all the processed rows of product data along with the available currency conversions stored at the time of the upload. This endpoint should support filtering and sorting based on the name, price, and expiration fields
-4. The application should support CSV files with up to 200k rows, but easily scale to support more.
+1.  **Navigate to the backend directory:**
+    ```bash
+    cd backend
+    ```
 
-## Requirements - Frontend
-1. The front-end should display a file upload input that allows the user to select a CSV file from their device.
-2. While the file is uploading and being processed, there should be a loading indicator displaying progress of the upload.
-3. Once the file uploads, a success message should display and you should be able to browse a table of the uploaded products. 
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
 
-## Submission
+3.  **Configure Environment Variables:**
+    Create a `.env` file in the `backend` directory with the following content:
 
-1. Create a branch and send a Pull Request into main when you are done. All code must be in this repo as a monorepo. Please do not put your solutions in a public repository!
-2. In the pull request, please include a short video walk-through (< 5 minutes) of your code and the experience you built. Also, describe improvement opportunities. [Vidyard](https://www.vidyard.com/chrome-extension-screen-recording/?utm_source=google-ads&utm_medium=cpc&utm_campaign=ChromeExtensionScreenRecord&utm_content=Extention_ChromeExt&utm_term=computer%20screen%20recorder%20free_b&gclid=Cj0KCQiA0eOPBhCGARIsAFIwTs4sn5e2WT7CGOsil0csKejSIthegolcNF2hVsixwJIOXI1zKWW8eO4aAgoVEALw_wcB) is a good choice.
-3. [Fill out this form with a link to your Pull Request](https://share.hsforms.com/1U_u8KkLWS6edbYxOoP64Dwse3g0). 
+    ```env
+    DATABASE_URL=postgres://postgres:password@localhost:5433/backend_db
+    REDIS_HOST=localhost
+    REDIS_PORT=6380
+    PORT=5000
 
-## Questions
+    # AWS Configuration
+    AWS_REGION=ap-south-1
+    AWS_ACCESS_KEY_ID=AKIAWV7SKEBJSSWCS6OC
+    AWS_SECRET_ACCESS_KEY=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
+    # The user can fill this in with their actual bucket name
+    AWS_BUCKET_NAME=flatirons-bhavesh
 
-If you have any questions, just create a new issue in this repo and we will respond and get back to you quickly.
+    MAX_CONCURRENCY=4
+    ```
+
+4.  **Start Infrastructure (Postgres & Redis):**
+    ```bash
+    docker compose up
+    ```
+    *Note: You may want to run this in a separate terminal or use `docker compose up -d` to run in detached mode.*
+
+5.  **Start the API Server:**
+    In a new terminal (inside `backend` directory):
+    ```bash
+    npm run start:api
+    ```
+
+6.  **Start the Background Worker:**
+    In another new terminal (inside `backend` directory):
+    ```bash
+    npm run start:worker
+    ```
+
+---
+
+## 2. Frontend Setup
+
+The frontend provides the user interface for uploading files and viewing products.
+
+### Steps:
+
+1.  **Navigate to the frontend directory:**
+    ```bash
+    cd frontend
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Start the Development Server:**
+    ```bash
+    npm run dev
+    ```
+
+4.  **Access the Application:**
+    Open your browser and navigate to the URL shown in the terminal (usually `http://localhost:5173`).
