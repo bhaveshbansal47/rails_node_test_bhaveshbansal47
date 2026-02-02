@@ -32,11 +32,11 @@ The backend handles file processing, database interactions, and background worke
     PORT=5000
 
     # AWS Configuration
-    AWS_REGION=ap-south-1
-    AWS_ACCESS_KEY_ID=AKIAWV7SKEBJSSWCS6OC
-    AWS_SECRET_ACCESS_KEY=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
+    AWS_REGION=
+    AWS_ACCESS_KEY_ID=
+    AWS_SECRET_ACCESS_KEY=
     # The user can fill this in with their actual bucket name
-    AWS_BUCKET_NAME=flatirons-bhavesh
+    AWS_BUCKET_NAME=
 
     MAX_CONCURRENCY=4
     ```
